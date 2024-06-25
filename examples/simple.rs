@@ -10,7 +10,7 @@ use bullet_lib::{
 };
 
 const HIDDEN_SIZE: usize = 2048;
-const OUTPUT_BUCKETS usize = 8;
+const OUTPUT_BUCKETS: usize = 8;
 const SCALE: i32 = 400;
 const QA: i32 = 255;
 const QB: i32 = 64;
@@ -20,10 +20,10 @@ fn main() {
         .quantisations(&[QA, QB])
         .optimiser(optimiser::AdamW)
         .input(inputs::Chess768)
-        .output_buckets(outputs::Single)
+        .output_buckets(outputs::MaterialCount::<OUTPUT_BUCKETS>)
         .feature_transformer(HIDDEN_SIZE)
         .activate(Activation::SCReLU)
-        .output_buckets(OUTPUT_BUCKETS);
+        .add_layer(1)
         .build();
 
     let schedule = TrainingSchedule {
@@ -37,7 +37,6 @@ fn main() {
         wdl_scheduler: wdl::ConstantWDL { value: 0.0 },
         // start = loss rate
         lr_scheduler: lr::StepLR { start: 0.001, gamma: 0.75, step: 60 },
-
         loss_function: Loss::SigmoidMSE,
         save_rate: 100,
         optimiser_settings: optimiser::AdamWParams { decay: 0.01 },
