@@ -19,23 +19,24 @@ fn main() {
     let mut trainer = TrainerBuilder::default()
         .quantisations(&[QA, QB])
         .input(inputs::Chess768)
-        .output_buckets(outputs::MaterialCount::<OUTPUT_BUCKETS>)
+        .optimiser(optimiser::AdamW)
+        .output_buckets(outputs::Single)
         .feature_transformer(HIDDEN_SIZE)
         .activate(Activation::SCReLU)
         .add_layer(1)
         .build();
 
     let schedule = TrainingSchedule {
-        net_id: "2048-8".to_string(),
+        net_id: "2048-v2".to_string(),
         eval_scale: 400.0,
         ft_regularisation: 0.0,
         batch_size: 16_384,
         batches_per_superbatch: 6104,
         start_superbatch: 1,
-        end_superbatch: 1000,
+        end_superbatch: 600,
         wdl_scheduler: WdlScheduler::Constant { value: 0.0 },
         // start = loss rate
-        lr_scheduler: LrScheduler::Step { start: 0.001, gamma: 0.3, step: 200 },
+        lr_scheduler: LrScheduler::Step { start: 0.001, gamma: 0.75, step: 60 },
         loss_function: Loss::SigmoidMSE,
         save_rate: 100,
     };
