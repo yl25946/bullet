@@ -18,7 +18,6 @@ const QB: i32 = 64;
 fn main() {
     let mut trainer = TrainerBuilder::default()
         .quantisations(&[QA, QB])
-        .optimiser(optimiser::AdamW)
         .input(inputs::Chess768)
         .optimiser(optimiser::AdamW)
         .output_buckets(outputs::Single)
