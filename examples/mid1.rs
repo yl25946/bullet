@@ -36,7 +36,7 @@ fn main() {
         .build();
 
     let schedule = TrainingSchedule {
-        net_id: "4-2048-8".to_string(),
+        net_id: "4-2048-8-v1".to_string(),
         eval_scale: 400.0,
         ft_regularisation: 0.0,
         batch_size: 16_384,

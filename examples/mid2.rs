@@ -20,13 +20,13 @@ fn main() {
         .quantisations(&[QA, QB])
         .input(inputs::ChessBucketsMirrored::new([
             0, 0, 1, 1,
-            0, 2, 2, 2,
-            3, 3, 3, 3,
-            3, 3, 3, 3,
-            3, 3, 3, 3,
-            3, 3, 3, 3,
-            3, 3, 3, 3,
-            3, 3, 3, 3,
+            0, 3, 2, 2,
+            3, 3, 4, 4,
+            3, 4, 4, 4,
+            4, 4, 4, 4,
+            4, 4, 4, 4,
+            4, 4, 4, 4,
+            4, 4, 4, 4,
         ]))
         .optimiser(optimiser::AdamW)
         .output_buckets(outputs::MaterialCount::<OUTPUT_BUCKETS>)
@@ -36,7 +36,7 @@ fn main() {
         .build();
 
     let schedule = TrainingSchedule {
-        net_id: "4-2048-8".to_string(),
+        net_id: "4-2048-8-v2".to_string(),
         eval_scale: 400.0,
         ft_regularisation: 0.0,
         batch_size: 16_384,
