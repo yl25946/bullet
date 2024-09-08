@@ -14,7 +14,7 @@ const SCALE: i32 = 400;
 const QA: i32 = 255;
 const QB: i32 = 64;
 
-const SUPERBATCHES: usize = 40;
+const SUPERBATCHES: usize = 80;
 
 fn main() {
     let mut trainer = TrainerBuilder::default()
@@ -28,7 +28,7 @@ fn main() {
         .build();
 
     let schedule = TrainingSchedule {
-        net_id: "smolnet0000".to_string(),
+        net_id: "smolnet0002".to_string(),
         eval_scale: 400.0,
         ft_regularisation: 0.0,
         batch_size: 16_384,
