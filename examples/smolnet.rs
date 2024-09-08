@@ -9,12 +9,12 @@ use bullet_lib::{
     inputs, loader, lr, optimiser, outputs, wdl, Activation, LocalSettings, Loss, TrainerBuilder, TrainingSchedule,
 };
 
-const HIDDEN_SIZE: usize = 128;
+const HIDDEN_SIZE: usize = 512;
 const SCALE: i32 = 400;
 const QA: i32 = 255;
 const QB: i32 = 64;
 
-const SUPERBATCHES: usize = 80;
+const SUPERBATCHES: usize = 100;
 
 fn main() {
     let mut trainer = TrainerBuilder::default()
