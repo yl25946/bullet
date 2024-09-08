@@ -21,8 +21,8 @@ pub struct MaterialCount<const N: usize>;
 impl<const N: usize> OutputBuckets<ChessBoard> for MaterialCount<N> {
     const BUCKETS: usize = N;
 
-    fn bucket(&self, pos: &ChessBoard) -> u8 {
-        let divisor = (32 + N - 1) / N;
-        (pos.occ().count_ones() as u8 - 2) / divisor as u8
+    fn bucket(&self, pos: &bulletformat::ChessBoard) -> u8 {
+        let pc_count = pos.occ().count_ones();
+        ((63 - pc_count) * (32 - pc_count) / 225).min(7) as u8
     }
 }
