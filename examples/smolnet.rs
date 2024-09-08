@@ -14,7 +14,7 @@ const SCALE: i32 = 400;
 const QA: i32 = 255;
 const QB: i32 = 64;
 
-const SUPERBATCHES: usize = 40;
+const SUPERBATCHES: usize = 80;
 
 fn main() {
     let mut trainer = TrainerBuilder::default()
