@@ -9,12 +9,12 @@ use bullet_lib::{
     inputs, loader, lr, optimiser, outputs, wdl, Activation, LocalSettings, Loss, TrainerBuilder, TrainingSchedule,
 };
 
-const HIDDEN_SIZE: usize = 128;
+const HIDDEN_SIZE: usize = 512;
 const SCALE: i32 = 400;
 const QA: i32 = 255;
 const QB: i32 = 64;
 
-const SUPERBATCHES: usize = 80;
+const SUPERBATCHES: usize = 100;
 
 fn main() {
     let mut trainer = TrainerBuilder::default()
@@ -24,11 +24,12 @@ fn main() {
         .output_buckets(outputs::MaterialCount::<8>)
         .feature_transformer(HIDDEN_SIZE)
         .activate(Activation::SCReLU)
+        .add_pairwise_mul()
         .add_layer(1)
         .build();
 
     let schedule = TrainingSchedule {
-        net_id: "smolnet0001".to_string(),
+        net_id: "smolnet0004".to_string(),
         eval_scale: 400.0,
         ft_regularisation: 0.0,
         batch_size: 16_384,
