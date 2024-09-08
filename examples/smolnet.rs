@@ -14,7 +14,7 @@ const SCALE: i32 = 400;
 const QA: i32 = 255;
 const QB: i32 = 64;
 
-const SUPERBATCHS: usize = 40;
+const SUPERBATCHES: usize = 40;
 
 fn main() {
     let mut trainer = TrainerBuilder::default()
@@ -34,11 +34,11 @@ fn main() {
         batch_size: 16_384,
         batches_per_superbatch: 6104,
         start_superbatch: 1,
-        end_superbatch: SUPERBATCHS,
+        end_superbatch: SUPERBATCHES,
         wdl_scheduler: wdl::ConstantWDL { value: 0.0 },
-        lr_scheduler: lr::StepLR { start: 0.001, gamma: 0.3, step: SUPERBATCHS / 4 },
+        lr_scheduler: lr::StepLR { start: 0.001, gamma: 0.3, step: SUPERBATCHES / 4 },
         loss_function: Loss::SigmoidMSE,
-        save_rate: 100,
+        save_rate: SUPERBATCHES / 4,
         optimiser_settings: optimiser::AdamWParams {
             decay: 0.01,
             beta1: 0.9,
