@@ -23,7 +23,7 @@ fn main() {
         .input(inputs::Chess768)
         .output_buckets(outputs::MaterialCount::<8>)
         .feature_transformer(HIDDEN_SIZE)
-        .activate(Activation::SCReLU)
+        .activate(Activation::CReLU)
         .add_pairwise_mul()
         .add_layer(1)
         .build();
