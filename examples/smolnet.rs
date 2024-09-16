@@ -37,7 +37,7 @@ fn main() {
         .build();
 
     let schedule = TrainingSchedule {
-        net_id: "smolnet0004".to_string(),
+        net_id: "smolnet0005".to_string(),
         eval_scale: 400.0,
         ft_regularisation: 0.0,
         batch_size: 16_384,
@@ -47,7 +47,7 @@ fn main() {
         wdl_scheduler: wdl::ConstantWDL { value: 0.0 },
         lr_scheduler: lr::StepLR { start: 0.001, gamma: 0.3, step: SUPERBATCHES / 4 },
         loss_function: Loss::SigmoidMSE,
-        save_rate: SUPERBATCHES / 4,
+        save_rate: SUPERBATCHES,
         optimiser_settings: optimiser::AdamWParams {
             decay: 0.01,
             beta1: 0.9,
