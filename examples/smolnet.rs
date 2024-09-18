@@ -21,14 +21,14 @@ fn main() {
         .quantisations(&[QA, QB])
         .optimiser(optimiser::AdamW)
         .input(inputs::ChessBucketsMirrored::new([
-            0, 0, 0, 1,
-            0, 2, 1, 1,
-            2, 2, 3, 3,
-            2, 3, 3, 3,
-            3, 3, 3, 3,
-            3, 3, 3, 3,
-            3, 3, 3, 3,
-            3, 3, 3, 3,
+            1, 2, 3, 4,
+            5, 5, 5, 5,
+            5, 5, 5, 5,
+            5, 5, 5, 5,
+            5, 5, 5, 5,
+            5, 5, 5, 5,
+            5, 5, 5, 5,
+            5, 5, 5, 5,
         ]))
         .output_buckets(outputs::MaterialCount::<8>)
         .feature_transformer(HIDDEN_SIZE)
