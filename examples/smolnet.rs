@@ -21,14 +21,14 @@ fn main() {
         .quantisations(&[QA, QB])
         .optimiser(optimiser::AdamW)
         .input(inputs::ChessBucketsMirrored::new([
-            1, 2, 3, 4,
-            5, 5, 5, 5,
-            5, 5, 5, 5,
-            5, 5, 5, 5,
-            5, 5, 5, 5,
-            5, 5, 5, 5,
-            5, 5, 5, 5,
-            5, 5, 5, 5,
+            0, 1, 2, 3,
+            4, 4, 4, 4,
+            4, 4, 4, 4,
+            4, 4, 4, 4,
+            4, 4, 4, 4,
+            4, 4, 4, 4,
+            4, 4, 4, 4,
+            4, 4, 4, 4,
         ]))
         .output_buckets(outputs::MaterialCount::<8>)
         .feature_transformer(HIDDEN_SIZE)
@@ -37,7 +37,7 @@ fn main() {
         .build();
 
     let schedule = TrainingSchedule {
-        net_id: "smolnet0005".to_string(),
+        net_id: "smolnet0006".to_string(),
         eval_scale: 400.0,
         ft_regularisation: 0.0,
         batch_size: 16_384,
