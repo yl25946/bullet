@@ -23,7 +23,7 @@ fn main() {
         .optimiser(optimiser::AdamW)
         .loss_fn(Loss::SigmoidMSE)
         .input(inputs::Chess768)
-        .output_buckets(outputs::Single)
+        .output_buckets(outputs::MaterialCount::<8>)
         .feature_transformer(HIDDEN_SIZE)
         .activate(Activation::SCReLU)
         .add_layer(1)
