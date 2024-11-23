@@ -15,7 +15,7 @@ const SCALE: i32 = 32;
 const QA: i16 = 255;
 const QB: i16 = 64;
 
-const SUPERBATCHES = 100;
+const SUPERBATCHES: usize = 100;
 
 fn main() {
     let mut trainer = TrainerBuilder::default()
@@ -30,7 +30,7 @@ fn main() {
         .build();
 
     let schedule = TrainingSchedule {
-        net_id: "simple".to_string(),
+        net_id: "quant32".to_string(),
         eval_scale: SCALE as f32,
         steps: TrainingSteps {
             batch_size: 16_384,
@@ -38,7 +38,7 @@ fn main() {
             start_superbatch: 1,
             end_superbatch: SUPERBATCHES,
         },
-        wdl_scheduler: wdl::ConstantWDL { value: 0 },
+        wdl_scheduler: wdl::ConstantWDL { value: 0.0 },
         lr_scheduler: lr::StepLR { start: 0.001, gamma: 0.3, step: SUPERBATCHES / 4 },
         save_rate: 50,
     };
