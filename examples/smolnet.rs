@@ -28,7 +28,7 @@ fn main() {
         .build();
 
     let schedule = TrainingSchedule {
-        net_id: "512-relabel-2048-8".to_string(),
+        net_id: "512-relabel-stockfish-4096".to_string(),
         eval_scale: 400.0,
         ft_regularisation: 0.0,
         batch_size: 16_384,
@@ -50,7 +50,7 @@ fn main() {
 
     let settings = LocalSettings { threads: 4, test_set: None, output_directory: "checkpoints", batch_queue_size: 512 };
 
-    let data_loader = loader::DirectSequentialDataLoader::new(&["../NNUE Data/master-dataset-relabeled-2048-8.bin"]);
+    let data_loader = loader::DirectSequentialDataLoader::new(&["../NNUE Data/master-dataset-relabeled-stockfish-4096.bin"]);
 
     trainer.run(&schedule, &settings, &data_loader);
 }
