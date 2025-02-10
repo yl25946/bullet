@@ -31,7 +31,7 @@ fn main() {
         trainer.load_from_checkpoint("checkpoints/2048-8-quadratic-relabeled-stockfish-4096-400");
 
     let schedule = TrainingSchedule {
-        net_id: "2048-8-quadratic-relabeled-stockfish-retrained-leela".to_string(),
+        net_id: "2048-8-quadratic-relabeled-stockfish-retrained-leela-2".to_string(),
         eval_scale: 400.0,
         ft_regularisation: 0.0,
         batch_size: 16_384,
@@ -39,7 +39,7 @@ fn main() {
         start_superbatch: 1,
         end_superbatch: SUPERBATCHES,
         wdl_scheduler: wdl::ConstantWDL { value: 0.0 },
-        lr_scheduler: lr::StepLR { start: 0.000001, gamma: 0.3, step: SUPERBATCHES },
+        lr_scheduler: lr::StepLR { start: 0.000005, gamma: 0.3, step: SUPERBATCHES },
         loss_function: Loss::SigmoidMSE,
         save_rate: SUPERBATCHES,
         optimiser_settings: optimiser::AdamWParams {
